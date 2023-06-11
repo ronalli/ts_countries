@@ -7,14 +7,33 @@ import { Container } from '../Container/Container';
 
 const Title = styled.a.attrs({
   href: '/',
-})``;
-const Wrapper = styled.div``;
+})`
+  color: var(--colors-text);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+`;
+
 const HeaderElement = styled.header`
   box-shadow: var(--shadow);
   background-color: (--colors-ui-base);
 `;
 
-const ModeSwitcher = styled.div``;
+const ModeSwitcher = styled.div`
+  display: flex;
+  align-items: center;
+  color: var(--colors-text);
+  cursor: pointer;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+`;
 
 const Header = () => {
   const [theme, setTheme] = useState('light');
@@ -33,7 +52,17 @@ const Header = () => {
         <Wrapper>
           <Title>Where is the world?</Title>
           <ModeSwitcher onClick={toggleTheme}>
-            <IoMoon /> Light Theme
+            {theme === 'light' ? (
+              <>
+                <IoMoonOutline size='14px' />
+                <span style={{ marginLeft: '0.45rem' }}>Dark Theme </span>
+              </>
+            ) : (
+              <>
+                <IoMoon size='14px' />
+                <span style={{ marginLeft: '0.45rem' }}>Light Theme </span>
+              </>
+            )}
           </ModeSwitcher>
         </Wrapper>
       </Container>
