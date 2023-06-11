@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { IoMoonOutline, IoMoon } from 'react-icons/io5';
 
-import { Container } from '../Container/Container';
+import { Container } from '../Container';
 
 const Title = styled.a.attrs({
   href: '/',
@@ -35,7 +35,7 @@ const ModeSwitcher = styled.div`
   font-weight: var(--fw-bold);
 `;
 
-const Header = () => {
+export const Header = () => {
   const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
@@ -69,5 +69,3 @@ const Header = () => {
     </HeaderElement>
   );
 };
-
-export default Header;
