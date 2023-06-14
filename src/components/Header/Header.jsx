@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { IoMoonOutline, IoMoon } from 'react-icons/io5';
 
 import { Container } from '../Container';
 
-const Title = styled.a.attrs({
-  href: '/',
-})`
+const Title = styled(Link)`
   color: var(--colors-text);
   font-size: var(--fs-sm);
   text-decoration: none;
@@ -50,7 +50,7 @@ export const Header = () => {
     <HeaderElement>
       <Container>
         <Wrapper>
-          <Title>Where is the world?</Title>
+          <Title to='/'>Where is the world?</Title>
           <ModeSwitcher onClick={toggleTheme}>
             {theme === 'light' ? (
               <>
