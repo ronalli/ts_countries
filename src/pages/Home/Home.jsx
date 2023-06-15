@@ -18,11 +18,14 @@ const Home = ({ countries, setCountries }) => {
     if (!countries.length)
       axios(allContries).then(({ data }) => {
         setCountries(data);
-        setCountriesFiltered(data);
       });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    handlerSearch();
+    // eslint-disable-next-line
+  }, [countries]);
 
   const handlerSearch = (search, region) => {
     let data = [...countries];
@@ -62,7 +65,7 @@ const Home = ({ countries, setCountries }) => {
               },
             ],
           };
-          let country = countryInfo.name.split(' ').join('');
+          let country = countryInfo.name;
           return (
             <Card
               key={country}
