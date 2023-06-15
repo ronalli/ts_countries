@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
 const HeaderElement = styled.header`
   box-shadow: var(--shadow);
-  background-color: (--colors-ui-base);
+  background-color: var(--colors-ui-base);
 `;
 
 const ModeSwitcher = styled.div`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Select from 'react-select';
 
 export const CustomSelect = styled(Select).attrs({
+  menuPosition: 'fixed',
   styles: {
     control: (provided) => ({
       ...provided,
@@ -10,7 +11,7 @@ export const CustomSelect = styled(Select).attrs({
       color: 'var(--colors-text)',
       borderRadius: 'var(--radius)',
       padding: '0.25rem',
-      border: 'none',
+      border: '0',
       boxShadow: 'var(--shadow)',
       height: '50px',
     }),
@@ -22,11 +23,15 @@ export const CustomSelect = styled(Select).attrs({
         ? 'var(--colors-bg)'
         : 'var(--colors-ui-base)',
     }),
+    menuList: (provided, state) => ({
+      ...provided,
+      backgroundColor: 'var(--colors-ui-base)',
+    }),
   },
 })`
   width: 200px;
   border-radius: var(--radius);
-  font-famile: var(--family);
+  font-family: var(--family);
   border: none;
 
   & > * {
@@ -43,5 +48,6 @@ export const CustomSelect = styled(Select).attrs({
 
   & > div[id] {
     background-color: var(--colors-ui-base);
+    z-index: 9999;
   }
 `;
