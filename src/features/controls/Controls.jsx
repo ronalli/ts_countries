@@ -35,7 +35,7 @@ export const Controls = () => {
         placeholder='Filter by Region'
         isClearable
         isSearchable={false}
-        value={optionsMap[region]}
+        value={optionsMap[region] || ''}
         onChange={handleSelect}
       />
     </Wrapper>
