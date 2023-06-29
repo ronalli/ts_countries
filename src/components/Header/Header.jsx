@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Container } from '../Container';
 import { ThemeSwitcher } from 'features/themes/ThemeSwitcher';
+import { useCleanup } from 'features/controls/use-cleanup';
 
 const Title = styled(Link)`
   color: var(--colors-text);
@@ -24,12 +25,15 @@ const HeaderElement = styled.header`
 `;
 
 export const Header = () => {
+  const cleanUp = useCleanup();
+
   return (
     <HeaderElement>
       <Container>
         <Wrapper>
-          <Title to='/'>Where is the world?</Title>
-
+          <Title to='/' onClick={cleanUp}>
+            Where is the world?
+          </Title>
           <ThemeSwitcher />
         </Wrapper>
       </Container>
