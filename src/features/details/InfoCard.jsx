@@ -1,8 +1,6 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { filterByCode } from '../../config';
 import { useNavigate } from 'react-router-dom';
+import { useNeighbors } from './use-neighbors';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -105,17 +103,8 @@ export const InfoCard = (props) => {
     tld,
   } = props;
 
-  const [neighbors, setNeighbors] = useState([]);
+  const neighbors = useNeighbors(borders);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (borders.length)
-      axios.get(filterByCode(borders)).then(({ data }) => {
-        setNeighbors(data.map((el) => el.name.common));
-      });
-  }, [borders]);
-
-  // console.log(neighbors);
 
   return (
     <Wrapper>
