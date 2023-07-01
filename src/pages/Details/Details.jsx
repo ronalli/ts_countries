@@ -1,30 +1,19 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 
-import { searchByCountry } from '../../config';
 import { Button } from '../../components/Button/Button';
-import { InfoCard } from '../../components/InfoCard/InfoCard';
+import { CountryDetails } from 'features/details/CountryDetails';
 
 export const Details = () => {
-  const navigate = useNavigate();
   const { name } = useParams();
-
-  const [country, setCountry] = useState(null);
-
-  useEffect(() => {
-    axios.get(searchByCountry(name)).then(({ data }) => setCountry(data[0]));
-  }, [name]);
-
-  // console.log(country);
+  const navigate = useNavigate();
 
   return (
     <div>
       <Button onClick={() => navigate(-1)}>
         <IoArrowBack /> Back
       </Button>
-      {country && <InfoCard {...country} />}
+      <CountryDetails name={name} navigate={navigate} />
     </div>
   );
 };
