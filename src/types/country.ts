@@ -39,3 +39,15 @@ export type Country = {
 	},
 	currencies: Currency
 }
+
+
+type Info = {
+	title: string,
+	description: string
+}
+
+export type CountryInfo = {
+	img: string,
+  name: string,
+  info: Info[]
+} 

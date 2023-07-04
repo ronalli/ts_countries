@@ -3,6 +3,8 @@ import { List } from 'components/List';
 import { useNavigate } from 'react-router-dom';
 import { useCountries } from './use-countries';
 
+import { CountryInfo } from 'types';
+
 export const CountryList = () => {
   const navigate = useNavigate();
   const [countries, { status, error }] = useCountries();
@@ -13,7 +15,7 @@ export const CountryList = () => {
       {status === 'received' && (
         <List>
           {countries.map((el) => {
-            const countryInfo = {
+            const countryInfo: CountryInfo = {
               img: el.flags.png,
               name: el.name.common,
               info: [
@@ -35,7 +37,7 @@ export const CountryList = () => {
             return (
               <Card
                 key={country}
-                onClick={() => navigate(`/country/${country}`)}
+                onClick={() => void navigate(`/country/${country}`)}
                 {...countryInfo}
               />
             );
