@@ -4,8 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-tsconfig.json
-src/types
 
 # testing
 /coverage
