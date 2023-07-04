@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction} from 'react-router-dom';
 import { useNeighbors } from './use-neighbors';
+import { Country } from 'types';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -89,7 +90,11 @@ const Tag = styled.span`
   cursor: pointer;
 `;
 
-export const InfoCard = (props) => {
+interface InfoCardProps extends Country {
+	navigate: NavigateFunction
+};
+
+export const InfoCard = (props: InfoCardProps) => {
   const {
     name,
     flags,
@@ -101,10 +106,10 @@ export const InfoCard = (props) => {
     subregion,
     region,
     tld,
+		navigate
   } = props;
 
   const neighbors = useNeighbors(borders);
-  const navigate = useNavigate();
 
   return (
     <Wrapper>
